@@ -1,0 +1,68 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@SaraJHaynes 
+10
+0 9 codefellows/seattle-201d48
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+seattle-201d48/.eslintrc.json
+@samhamm samhamm First commit
+f9ebee9 18 days ago
+39 lines (38 sloc)  694 Bytes
+    
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "eqeqeq": ["error", "always"],
+    "no-console": "off",
+    "no-undefined": "off",
+    "indent": ["error", 2],
+    "quotes": ["warn", "single"],
+    "no-multi-spaces": [
+      "warn",
+      {
+        "exceptions": {
+          "VariableDeclarator": true
+        }
+      }
+    ],
+    "no-trailing-spaces": "warn",
+    "new-cap": "warn",
+    "no-redeclare": [
+      "error",
+      {
+        "builtinGlobals": true
+      }
+    ],
+    "semi": [2, "always"],
+    "eol-last": "error"
+  }
+}
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
