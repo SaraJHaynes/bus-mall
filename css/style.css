@@ -1,0 +1,87 @@
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: black;
+    font-style: bold;
+    margin-right: 80px;
+    margin-left: 80px;
+    text-align: center;
+
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: black;
+    font-style: bold;
+    margin-right: 80px;
+    margin-left: 80px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 10px
+
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    margin-right: 80px;
+    margin-left: 80px;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+
+body {
+    background-color: rgb(143, 143, 143);
+    margin-right: 25px;
+    margin-left: 68px;
+    display: inline-block;
+   
+    
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: black;
+    border: black solid 3px;
+    background-color:rgb(230, 236, 230);
+    margin-right: 80px;
+    margin-left: 80px;
+    padding: 10px;
+    margin-bottom: 25px;
+
+}
+
+img {
+    margin-right: 0px;
+    display: block;
+    float: right;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color:rgb(52, 150, 52);
+    height: 275px; 
+    width: 275px;
+    
+}
+img {
+    float: left;
+    padding: 5px;
+    margin-left: 80px;
+
+  }
+  
+  footer {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: black;
+    margin-right: 80px;
+    margin-left: 80px;
+    padding: 20px;
+    text-align: center;
+
+  }
