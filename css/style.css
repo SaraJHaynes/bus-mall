@@ -38,7 +38,7 @@ body {
     background-color: rgb(143, 143, 143);
     margin-right: 25px;
     margin-left: 68px;
-    display: inline-block;
+    /* display: inline-block; */
    
     
 }
@@ -84,4 +84,10 @@ img {
     padding: 20px;
     text-align: center;
 
+  }
+
+  #image-list {
+      width: 400px;
+      vertical-align: middle;
+      float: bottom;
   }
