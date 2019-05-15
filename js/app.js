@@ -8,9 +8,11 @@ var imageOne = document.getElementById ('image-one');
 var imageTwo = document.getElementById ('image-two');
 var imageThree = document.getElementById ('image-three');
 var allProductArray = [];
-var previouslyViewed = ['initial', 'place', 'holder'];
+var previouslyViewed = [0,1,2];
 var votesRemaining = 25;
 var products = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+var productVotes = [];
+
 
 
 
@@ -67,6 +69,7 @@ function getThreeRandomProducts() {
 function renderProductImages(){
 	console.log('inside of render product images')
 	getThreeRandomProducts();
+
 	imageOne.src = allProductArray[previouslyViewed[3]].filepath;
 	imageTwo.src = allProductArray[previouslyViewed[4]].filepath;
 	imageThree.src = allProductArray[previouslyViewed[5]].filepath;
@@ -85,6 +88,97 @@ function renderProductImages(){
 
 }
 
+// ++++++++++++++++++++++++++++++++++++++++++++
+// CHART STUFF
+// Charts rendered using Chart JS v.2.7.2
+// http://www.chartjs.org/
+// ++++++++++++++++++++++++++++++++++++++++++++
+
+function getData(){
+	for (var i = 0; i < allProductArray.length; i++){
+		productVotes.push(allProductArray[i].votes)
+	}
+}
+
+var data = {
+	labels: products, // titles array we declared earlier
+	
+  datasets: [{
+		label: "Bus Mall Chart",
+		
+    data: productVotes, // votes array we declared earlier
+    backgroundColor: [
+
+      'bisque',
+      'darkgray',
+      'burlywood',
+      'lightblue',
+			'navy',
+			'pink',
+			'purple',
+			'yellow',
+			'bisque',
+      'darkgray',
+      'burlywood',
+      'lightblue',
+			'navy',
+			'pink',
+			'purple',
+			'yellow','bisque',
+      'darkgray',
+      'burlywood',
+      'lightblue',
+			'navy',
+			'pink',
+			'purple',
+			'yellow',
+    ],
+    hoverBackgroundColor: [
+      'purple',
+      'blue',
+      'yellow',
+      'blue',
+			'purple',
+			'yellow',
+    ]
+  }]
+};
+
+function drawChart() {
+  var ctx = document.getElementById('image-chart').getContext('2d');
+	
+	busChart = new Chart(ctx, {
+    type: 'bar',
+		data: data,
+    options: {
+      responsive: false,
+      animation: {
+        duration: 2500,
+        easing: 'easeOutBounce'
+			}
+			
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          max: 10,
+          min: 0,
+          stepSize: 1.0
+        }
+      }]
+    }
+  });
+
+  chartDrawn = true;
+}
+
+// TRYING TO PUT DATA IN A CHART//////////////////////////////////////////
+function chartData(){
+  for (var i=0; i<allProductArray.length; i++){
+    nameArray.push(allProductArray[i].name);
+    voteArray.push(allProductArray[i].timesShown);
+	} 
+}
 
 //Event Handler Function
 function handleImagesClick(event) {
@@ -98,10 +192,12 @@ function handleImagesClick(event) {
 
 	if(votesRemaining === 0){
 		imageContainer.removeEventListener('click', handleImagesClick);
+		getData();
+		console.log('array info' + productVotes)
 		//call render list function
 		
 		renderList();
-		
+		drawChart();
 	}
 	renderProductImages();
 }
@@ -110,15 +206,13 @@ var ulEl = document.createElement('ul');
 	imageList.appendChild(ulEl);
 	
 function renderList(){
-for(var i = 0; i < allProductArray.length; i++){
+	for(var i = 0; i < allProductArray.length; i++){
 			var liEl = document.createElement('li');
 			liEl.textContent = `${allProductArray[i].name} got ${allProductArray[i].votes} votes`;
 			ulEl.appendChild(liEl);
 	}
-
 }
+
 imageContainer.addEventListener('click', handleImagesClick);
-// //Stuff That Runs On Page
 renderProductImages();
 
-//Event Handler
