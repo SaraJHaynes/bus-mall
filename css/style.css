@@ -35,9 +35,9 @@ h2 {
 }
 
 body {
-    background-color: rgb(143, 143, 143);
-    margin-right: 25px;
-    margin-left: 68px;
+    background-color: rgb(207, 214, 205);
+    /* margin-right: 25px;
+    margin-left: 68px; */
     /* display: inline-block; */
    
     
@@ -48,11 +48,9 @@ p {
     font-size: 20px;
     color: black;
     border: black solid 3px;
-    background-color:rgb(230, 236, 230);
+    background-color:whitesmoke;
     margin-right: 80px;
     margin-left: 80px;
-    padding: 10px;
-    margin-bottom: 25px;
 
 }
 
@@ -63,15 +61,16 @@ img {
     border-style: solid;
     border-color: black;
     border-width: 3px;
-    background-color:rgb(52, 150, 52);
-    height: 275px; 
-    width: 275px;
+    background-color:whitesmoke;
+    height: 200px; 
+    width: 200px;
     
 }
 img {
     float: left;
     padding: 5px;
-    margin-left: 80px;
+    margin-left: 150px;
+    margin-top: 15px;
 
   }
   
@@ -81,13 +80,17 @@ img {
     color: black;
     margin-right: 80px;
     margin-left: 80px;
-    padding: 20px;
-    text-align: center;
+   text-align: center;
+   vertical-align: auto;
 
   }
 
-  #image-list {
-      width: 400px;
-      vertical-align: middle;
-      float: bottom;
+ canvas {
+      width: 800px;
+      height: 300px;
+      background-color: whitesmoke;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+      
   }
