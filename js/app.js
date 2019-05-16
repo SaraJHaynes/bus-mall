@@ -1,6 +1,8 @@
 'use strict';
 
+//////////// LOCAL STORAGE IF STATEMENT ////////////////////
 //Global Variables
+
 
 var imageContainer = document.getElementById('image-container');
 var imageList = document.getElementById('image-list');
@@ -12,6 +14,7 @@ var previouslyViewed = [0,1,2];
 var votesRemaining = 25;
 var products = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 var productVotes = [];
+var drawChart;
 
 
 
@@ -34,8 +37,8 @@ function allProductArrayCalc(productArray) {
 		}
 	
 }
-
-allProductArrayCalc(products);
+localStorageValidator();
+// allProductArrayCalc(products);
 function getRandomIndex() {
 	return Math.floor(Math.random() * allProductArray.length);
 }
@@ -88,15 +91,14 @@ function renderProductImages(){
 
 }
 
-// ++++++++++++++++++++++++++++++++++++++++++++
+
 // CHART STUFF
 // Charts rendered using Chart JS v.2.7.2
 // http://www.chartjs.org/
-// ++++++++++++++++++++++++++++++++++++++++++++
 
 function getData(){
 	for (var i = 0; i < allProductArray.length; i++){
-		productVotes.push(allProductArray[i].votes)
+		productVotes[i] = allProductArray[i].votes;
 	}
 }
 
@@ -147,7 +149,7 @@ var data = {
 function drawChart() {
   var ctx = document.getElementById('image-chart').getContext('2d');
 	
-	busChart = new Chart(ctx, {
+	new Chart(ctx, {
     type: 'bar',
 		data: data,
     options: {
@@ -179,7 +181,29 @@ function chartData(){
     voteArray.push(allProductArray[i].timesShown);
 	} 
 }
+/////////////// Putting in Local Storage////////////////////////
 
+function saveToLocalStorage(){
+	var stringifiedProducts = JSON.stringify(allProductArray);
+	localStorage.setItem('products', stringifiedProducts);
+}
+///////////// RETRIEVED FROM LOCAL STORAGE //////////////////////
+function localStorageValidator(){
+	if (localStorage.products){
+		// var unparsedProducts = localStorage.getItem('products');
+		var parsedProducts = JSON.parse(localStorage.getItem('products'));
+		console.log('parsed products', parsedProducts);
+	allProductArray = parsedProducts;
+	} else {
+		allProductArrayCalc(products);
+
+		//CAllED IN MULTIPLE SPOTS//////////
+		// renderProductImages();
+		// getData();
+		// drawChart();
+	}
+	}
+	
 //Event Handler Function
 function handleImagesClick(event) {
 	votesRemaining--;
@@ -196,7 +220,8 @@ function handleImagesClick(event) {
 		console.log('array info' + productVotes)
 		//call render list function
 		
-		renderList();
+		// renderList();//////// 	TURNED OFF LIST ON CHART
+		saveToLocalStorage();
 		drawChart();
 	}
 	renderProductImages();
